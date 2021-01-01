@@ -58,9 +58,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AppClick.cs" />
      <Compile Include="Assets\Application.cs" />
      <Compile Include="Assets\CategoriesEnum.cs" />
      <Compile Include="Assets\LoadChart.cs" />
+     <Compile Include="Assets\LoadTopApps.cs" />
+     <Compile Include="Assets\PanelScript.cs" />
+     <Compile Include="Assets\SerializableApplication.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>G:/University/SWE/Github/SE_GooglePlay_data_visualisation/google play data visualization/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

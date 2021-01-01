@@ -6,9 +6,13 @@
     <e p="G:\University\SWE\Github\SE_GooglePlay_data_visualisation\google play data visualization" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="AppClick.cs" t="Include" />
         <e p="Application.cs" t="Include" />
         <e p="CategoriesEnum.cs" t="Include" />
         <e p="LoadChart.cs" t="Include" />
+        <e p="LoadTopApps.cs" t="Include" />
+        <e p="PanelScript.cs" t="Include" />
+        <e p="SerializableApplication.cs" t="Include" />
       </e>
       <e p="google play data visualization.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />
