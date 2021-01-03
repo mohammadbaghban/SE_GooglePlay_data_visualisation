@@ -7,17 +7,28 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="AppClick.cs" t="Include" />
+        <e p="AppJSONClass.cs" t="Include" />
         <e p="Application.cs" t="Include" />
+        <e p="Apps.cs" t="Include" />
+        <e p="ButtonClickHandler.cs" t="Include" />
+        <e p="CameraMovement.cs" t="Include" />
         <e p="CategoriesEnum.cs" t="Include" />
         <e p="LoadChart.cs" t="Include" />
         <e p="LoadTopApps.cs" t="Include" />
         <e p="PanelScript.cs" t="Include" />
         <e p="SerializableApplication.cs" t="Include" />
+        <e p="Test" t="Include">
+          <e p="Tests" t="Include">
+            <e p="Tests.asmdef" t="Include" />
+            <e p="Tests.cs" t="Include" />
+          </e>
+        </e>
       </e>
       <e p="google play data visualization.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
       <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="Tests.csproj" t="IncludeRecursive" />
     </e>
   </component>
 </project>

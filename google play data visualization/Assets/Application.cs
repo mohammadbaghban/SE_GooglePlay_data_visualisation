@@ -9,5 +9,12 @@
         public int Installs { get; set; }
         public float Size { get; set; }
         public float Price { get; set; }
+
+        public Application()
+        {
+            Size = 4;
+            Price = 0;
+            Installs = 10000;
+        }
     }
 }

@@ -1,62 +1,43 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Application = DefaultNamespace.Application;
-using Random = UnityEngine.Random;
 
 public class LoadChart : MonoBehaviour
 {
     public GameObject spherePrefab;
-    public int countOfApps = 100;
-    public GameObject appPanel; 
+    public GameObject appPanel;
     public Text appText;
     public Text appDownloadNumber;
-    
+    public Text rating;
+    public Text category;
+    public Application[] applications;
+
     public Dictionary<CategoriesEnum, Color> categoryToColor;
+
+    private const int APPS_COUNT = 1000;
     // Start is called before the first frame update
     void Start()
     {
         MakeCategoriesDictionary();
-
-        for (int i = 0; i < 1000; i++)
-        {
-            Application application = new Application()
-            {
-                Name = "App" + i,
-                Category = RandomEnumValue<CategoriesEnum>(),
-                Installs = Random.Range(100, 10000000),
-                Price = Random.Range(0, 5),
-                Rating = Random.Range(1, 5),
-                Reviews = Random.Range(100, 100000),
-                Size = Random.Range(2, 20)
-            };
-            float x = application.Price * 4;
-            float z = application.Reviews * application.Rating / 8000;
-            float y = application.Installs / 100000;
-            GameObject s1 = Instantiate(spherePrefab);
-            s1.GetComponent<AppClick>().application = application;
-            s1.GetComponent<AppClick>().appPanel = appPanel;
-            s1.GetComponent<AppClick>().appText = appText;
-            s1.GetComponent<AppClick>().appDownloadNumber = appDownloadNumber;
-            
-            s1.transform.position = new Vector3(x, y, z);
-            s1.GetComponent<MeshRenderer>().material.color = categoryToColor[application.Category];
-            s1.transform.localScale = new Vector3(application.Size / 10, application.Size / 10, application.Size / 10);
-        }
-
+        StartCoroutine(GetRequest("https://mehranehjafari.ir/api/get_by_download?number=" + APPS_COUNT + "&format=json"));
     }
-   
-    static System.Random _R = new System.Random ();
-    static T RandomEnumValue<T> ()
+
+    static System.Random _R = new System.Random();
+
+    static T RandomEnumValue<T>()
     {
-        var v = Enum.GetValues (typeof (T));
-        return (T) v.GetValue (_R.Next(v.Length));
+        var v = Enum.GetValues(typeof(T));
+        return (T) v.GetValue(_R.Next(v.Length));
     }
-    
+
     IEnumerator GetRequest(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
@@ -73,16 +54,115 @@ public class LoadChart : MonoBehaviour
             }
             else
             {
-                Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                var response = webRequest.downloadHandler.text;
+                //Debug.Log(pages[page] + ":\nReceived: " + response);
+                Apps apps = JsonUtility.FromJson<Apps>(response);
+                applications = new Application[apps.apps.Length];
+
+                for (int i = 0; i < apps.apps.Length; i++)
+                {
+                    //Debug.Log(apps.apps[i].Price);
+                    applications[i] = new Application();
+                    applications[i].Name = apps.apps[i].ApplicationName;
+                    applications[i].Category = StringToCategory(apps.apps[i].Category);
+                    applications[i].Rating = GetFloat(apps.apps[i].OverallUserRating);
+                    applications[i].Reviews = GetInt(apps.apps[i].NumberOfUsersReviews);
+                    applications[i].Installs = GetInt(apps.apps[i].NumberOfUserDownloads);
+                    applications[i].Size = GetFloat(apps.apps[i].Size);
+                    applications[i].Price = GetFloat(apps.apps[i].Price);
+                    Debug.Log(applications[i].Name + " Installs " + applications[i].Installs + " Price " + applications[i].Price + " Rating " + 
+                              applications[i].Rating + " Reviews " + applications[i].Reviews + " Size " + applications[i].Size);
+                }
+                GenerateShapes(applications);
+                Debug.Log("Here ");
             }
         }
     }
+
+    private void GenerateShapes(Application[] apps)
+    {
+        for (int i = 1; i < apps.Length; i++)
+        {
+            
+            // float y = (float) Math.Log(Math.Max(apps[i].Price, 1), 10) * 4;
+            // float z = (float) Math.Log(apps[i].Reviews * apps[i].Rating, 10);
+            // float x = (float) Math.Log(apps[i].Installs, 10);
+
+            float y =  apps[i].Rating / 5 * 15f;
+            float x = (float) (Math.Log(apps[i].Installs, 10) * 8f - 55f);
+            float z = apps[i].Reviews / 1000000f;
+            GameObject s1 = Instantiate(spherePrefab);
+            s1.GetComponent<AppClick>().application = apps[i];
+            s1.GetComponent<AppClick>().appPanel = appPanel;
+            s1.GetComponent<AppClick>().appText = appText;
+            s1.GetComponent<AppClick>().appDownloadNumber = appDownloadNumber;
+            s1.GetComponent<AppClick>().appRating = rating;
+            s1.GetComponent<AppClick>().appCategory = category;
+
+            s1.transform.position = new Vector3(x, y, z);
+            s1.GetComponent<MeshRenderer>().material.color = categoryToColor[apps[i].Category];
+            apps[i].Size = Math.Max(apps[i].Size, 5);
+            float size = (float) Math.Log(apps[i].Size, 10) / 10f;
+            s1.transform.localScale = new Vector3(size, size, size);
+        }
+        Debug.Log("H2");
+    }
+    
+    private static int GetInt(string input)
+    {
+        int number = 0;
+        Int32.TryParse(new string(input.Where(c => char.IsDigit(c) || c == '.').ToArray()), out number);
+        return number;
+    }
+    
+    private static float GetFloat(string input)
+    {
+        float number = 0;
+       // var stripped = Regex.Replace(input, "[^0-9].", "");
+        float.TryParse(new string(input.Where(c => (char.IsDigit(c) || c.Equals('.'))).ToArray()), out number);
+        Debug.Log(number);
+
+        return number;
+    }
+    
+    CategoriesEnum StringToCategory(String categoryString)
+    {
+        switch (categoryString)
+        {
+            case "FAMILY":
+                return CategoriesEnum.FAMILY;
+            case "GAME":
+                return CategoriesEnum.GAME;
+            case "ART_AND_DESIGN":
+                return CategoriesEnum.ART_AND_DESIGN;
+            case "AUTO_AND_VEHICLES":
+                return CategoriesEnum.AUTO_AND_VEHICLES;
+            case "BEAUTY":
+                return CategoriesEnum.BEAUTY;
+            case "BOOKS_AND_REFERENCE":
+                return CategoriesEnum.BOOKS_AND_REFERENCE;
+            case "BUSINESS":
+                return CategoriesEnum.BUSINESS;
+            case "COMICS":
+                return CategoriesEnum.COMICS;
+            case "COMMUNICATION":
+                return CategoriesEnum.COMMUNICATION;
+            case "EDUCATION":
+                return CategoriesEnum.EDUCATION;
+            default:
+                return CategoriesEnum.OTHER;
+        }
+    } 
+
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey ("escape"))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
-    
+
     void MakeCategoriesDictionary()
     {
         categoryToColor = new Dictionary<CategoriesEnum, Color>();
