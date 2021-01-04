@@ -1,5 +1,5 @@
 # Google Play data visualisation
-This desktop application visualizes Googleplay datas by using Unity game engine. For scraping datas from Kaggle we need an API, ‌so we used Django Rest Framework to implement that. 
+This desktop application visualizes Google Play datas by using Unity game engine. For scraping datas from Kaggle we need an API, ‌so we used Django Rest Framework to implement that. 
 Dataset has been categorized in beck-end and API sends them to front-end.
 In the 3D diagram, spheres represent records of our database (applications on Googleplay), by clicking on each of them, you can see more details.
 
@@ -15,7 +15,7 @@ In the 3D diagram, spheres represent records of our database (applications on Go
    * DRF(Django Rest Framework)
     
 ## Who is it for? ##
-  * Application developers who want to know more about Googleplay dataset
+  * Application developers who want to know more about Google Play dataset
   * analysts
  
 ## API ## 
