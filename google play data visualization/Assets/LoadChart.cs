@@ -81,7 +81,7 @@ public class LoadChart : MonoBehaviour
 
     private void GenerateShapes(Application[] apps)
     {
-        for (int i = 1; i < apps.Length; i++)
+        for (int i = 0; i < apps.Length; i++)
         {
             
             // float y = (float) Math.Log(Math.Max(apps[i].Price, 1), 10) * 4;

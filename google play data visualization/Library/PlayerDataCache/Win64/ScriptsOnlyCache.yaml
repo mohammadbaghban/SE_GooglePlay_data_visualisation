@@ -14,6 +14,8 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    UnityEditor.UI.dll:
+    - UnityEditor.UI.TextEditor
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -51,19 +53,23 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11152}
+      Script: {instanceID: 11180}
     - Class: 114
-      Script: {instanceID: 11312}
+      Script: {instanceID: 11340}
     - Class: 114
-      Script: {instanceID: 11352}
+      Script: {instanceID: 11380}
     - Class: 114
-      Script: {instanceID: 11514}
+      Script: {instanceID: 11542}
     - Class: 114
-      Script: {instanceID: 12048}
+      Script: {instanceID: 11768}
     - Class: 114
-      Script: {instanceID: 12468}
+      Script: {instanceID: 12076}
     - Class: 114
-      Script: {instanceID: 12608}
+      Script: {instanceID: 12498}
+    - Class: 114
+      Script: {instanceID: 12638}
+    - Class: 114
+      Script: {instanceID: 12988}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -106,23 +112,23 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11152}
+      Script: {instanceID: 11180}
     - Class: 114
-      Script: {instanceID: 11312}
+      Script: {instanceID: 11340}
     - Class: 114
-      Script: {instanceID: 11352}
+      Script: {instanceID: 11380}
     - Class: 114
-      Script: {instanceID: 11514}
+      Script: {instanceID: 11542}
     - Class: 114
-      Script: {instanceID: 11740}
+      Script: {instanceID: 11768}
     - Class: 114
-      Script: {instanceID: 12126}
+      Script: {instanceID: 12154}
     - Class: 114
-      Script: {instanceID: 12608}
+      Script: {instanceID: 12326}
     - Class: 114
-      Script: {instanceID: 12958}
+      Script: {instanceID: 12638}
     - Class: 114
-      Script: {instanceID: 13598}
+      Script: {instanceID: 12988}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -169,25 +175,25 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11152}
+      Script: {instanceID: 11180}
     - Class: 114
-      Script: {instanceID: 11312}
+      Script: {instanceID: 11340}
     - Class: 114
-      Script: {instanceID: 11352}
+      Script: {instanceID: 11380}
     - Class: 114
-      Script: {instanceID: 11514}
+      Script: {instanceID: 11542}
     - Class: 114
-      Script: {instanceID: 11740}
+      Script: {instanceID: 11768}
     - Class: 114
-      Script: {instanceID: 11920}
+      Script: {instanceID: 11948}
     - Class: 114
-      Script: {instanceID: 12048}
+      Script: {instanceID: 12076}
     - Class: 114
-      Script: {instanceID: 12608}
+      Script: {instanceID: 12638}
     - Class: 114
-      Script: {instanceID: 12770}
+      Script: {instanceID: 12800}
     - Class: 114
-      Script: {instanceID: 12958}
+      Script: {instanceID: 12988}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -473,6 +479,12 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ButtonClickHandler
+  - hash:
+      serializedVersion: 2
       Hash: 783f593b9380cf72d0f7ebfd4a0d4bcd
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -521,7 +533,7 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: d1eb1e83f3b7a0b72a675b968ce9e8c8
+      Hash: 59d6b14521fe0cdfe9ae76311e826bc8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LoadTopApps
@@ -663,12 +675,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ButtonClickHandler
   platform: 19
   scenePathNames:
   - Assets/Scenes/MenuScene.unity
