@@ -14,8 +14,6 @@ public class LoadTopApps : MonoBehaviour
 {
     private const int APPS_COUNT = 5;
     public Dictionary<CategoriesEnum, Color> categoryToColor;
-
-    public GameObject cube;
     public GameObject appPanel; 
     public Text appText;
     public Text appDownloadNumber;
@@ -23,6 +21,7 @@ public class LoadTopApps : MonoBehaviour
     public Text category;
     public Application[] applications;
     public GameObject cubePrefab;
+    public Text nameText;
 
 
     
@@ -95,10 +94,15 @@ public class LoadTopApps : MonoBehaviour
             s1.GetComponent<AppClick>().appDownloadNumber = appDownloadNumber;
             s1.GetComponent<AppClick>().appRating = rating;
             s1.GetComponent<AppClick>().appCategory = category;
+            GameObject appName = s1.transform.GetChild(0).transform.GetChild(0).gameObject;
+            appName.GetComponent<Text>().text = apps[i].Name;
 
             s1.transform.position = new Vector3(x, y, z);
             s1.GetComponent<MeshRenderer>().material.color = categoryToColor[apps[i].Category];
             s1.transform.localScale = new Vector3(8, yScale, 1);
+            appName.transform.parent.transform.localScale = new Vector3(1f / 8f * 0.3f, 1f / yScale * 0.3f, 1f);
+            appName.transform.parent.transform.localPosition = new Vector3(0f, -0.42f, -0.6f);
+            
         }
         Debug.Log("H2");
     }
