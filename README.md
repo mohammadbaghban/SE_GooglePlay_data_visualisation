@@ -58,8 +58,7 @@ This method will return all existing records in database in provided format:<br>
 ```
 {“APP Name”:[“ Category”:” Category”, “OverallUserRating”:” OverallUserRating”, “NumberOfUsersReviews”:” NumberOfUsersReviews”, “Size”:” Size”, “NumberOfUserDownloads”:” NumberOfUserDownloads”, “PaidOrFree”:” PaidOrFree”, “Price”:” Price”, “AgeGroup”:” AgeGroup”, “Genres”:” Genres”]}
 ```
-##test##
- We have a test.py file for testing our API which hast 2 functions.
+
     
 
 
