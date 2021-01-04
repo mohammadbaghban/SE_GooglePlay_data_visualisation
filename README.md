@@ -1,5 +1,5 @@
 # Google Play data visualisation
-Google play data visualization using Unity and Django Rest Framework
+Google play data visualization using Unity and Django Rest Framework  
 این برنامه، داده‌های برنامه‌های فروشگاه گوگل‌پلی را از برنامه‌ی بک‌اند دریافت می‌کند و آن‌ها را به چند شکل مختلف سه‌بعدی و دوبعدی نمایش می‌دهد.  
 این برنامه با موتور بازی‌سازی یونیتی نوشته شده‌است.
 در بخش بک‌اند از جنگو استفاده شده است تا داده ها را استخراج کرده و در قالب دسته بندی های مختلف، آن‌ها را به بخش فرانت بفرستد.
