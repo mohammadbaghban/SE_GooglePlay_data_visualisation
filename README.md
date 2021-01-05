@@ -16,7 +16,7 @@ In the 3D diagram, spheres represent records of our database (applications on Go
     
 ## Who is it for? ##
   * Application developers who want to know more about Google Play dataset
-  * analysts
+  * Analysts
  
 ## API ## 
 
