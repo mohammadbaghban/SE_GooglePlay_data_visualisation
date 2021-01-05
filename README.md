@@ -60,6 +60,15 @@ This method will return all existing records in database in provided format:<br>
 ```
 
     
+   
+## Client Application ## 
+  * You can use right click and mouse wheel to move and rotate through 3D chart.
+![screenshot](https://github.com/mohammadbaghban/SE_GooglePlay_data_visualisation/blob/main/Screenshots/google%20play%20data%20visualization%201_5_2021%2011_55_57%20AM.png?raw=true)
+![screenshot](https://github.com/mohammadbaghban/SE_GooglePlay_data_visualisation/blob/main/Screenshots/google%20play%20data%20visualization%201_5_2021%2011_57_28%20AM.png?raw=true)
+  * Each sphere represents an app, by clicking on them you can see more details about the app.
+  ![screenshot](https://github.com/mohammadbaghban/SE_GooglePlay_data_visualisation/blob/main/Screenshots/google%20play%20data%20visualization%201_5_2021%2011_57_53%20AM.png?raw=true)
+  * There is another chart to compare 5 apps by their rating.
+    ![screenshot](https://github.com/mohammadbaghban/SE_GooglePlay_data_visualisation/blob/main/Screenshots/google%20play%20data%20visualization%201_5_2021%2011_58_05%20AM.png?raw=true)
 
 
 
